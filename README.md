@@ -34,6 +34,16 @@ Read the numbered documents in order; each builds only on the ones before it.
 
 `pnpm check` runs the typecheck, the tests and the build.
 
+### Local demo
+
+Run the [checklist demo](examples/local-demo.ts) from the repository root with Node.js 24. It uses the real `Engine` and in-memory repositories, with local adapters for messages, authorization, assessment, execution, and replies. It runs without installing packages or setting up accounts.
+
+```sh
+node --experimental-transform-types examples/local-demo.ts
+```
+
+A guest's request is ignored. An allowed member's mention creates one Ticket with a Mandate and sends an acknowledgement. Replaying the message creates no second Ticket, and a follow-up in the same Thread becomes an Input to the existing Assignment. The simulated worker builds a checklist and returns it to the originating Channel. The terminal prints the decision trace and both Channel messages.
+
 ## License
 
 [MIT](LICENSE)
